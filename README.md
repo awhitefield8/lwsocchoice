@@ -1,4 +1,4 @@
-# Constrained social choice 
+# Low complexity social choice
 
 This repository contains code that facilitates simulations of low complexity voting schemes.
 
