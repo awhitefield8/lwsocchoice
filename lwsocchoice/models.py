@@ -1,7 +1,7 @@
 ### class representing a set of voters - specifically for graph based voting rules
 import math
 import numpy as np
-from gensocchoice.funcs import *
+from lwsocchoice.funcs import *
 
 
 

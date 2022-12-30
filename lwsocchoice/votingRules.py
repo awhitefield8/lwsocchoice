@@ -2,7 +2,7 @@
 import random
 import numpy as np
 
-from gensocchoice.funcs import *
+from lwsocchoice.funcs import *
 ### exact rules 
 
 #borda winner
