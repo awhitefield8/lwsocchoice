@@ -10,21 +10,25 @@ import itertools
 
 
 def borda(positions,ranks,policy):
-    '''
-    positions = number of options
-    ranking = an individuals ranking
-    policy = policy chosen, this is a number
-    Returns the borda score of a policy for an individual given thier preference orderings
+    ''' Borda rule
+    Args,
+        positions: number of options
+        ranking: an individuals ranking
+        policy: policy chosen, this is a number
+    Returns,
+        The borda score of a policy for an individual given thier preference orderings
     '''
     id = ranks.index(policy)
     borda_score = positions - id - 1
     return(borda_score)
 
 def plurality(ranks,policy):
-    '''
-    ranking = an individuals ranking
-    policy = policy chosen, this is a number
-    Returns one if an individuals top voted state is the same as the policy
+    ''' Plurality rule
+    Args,
+        ranking: an individuals ranking
+        policy: policy chosen, this is a number
+    Returns,
+        one if an individuals top voted state is the same as the policy
     '''
     if ranks[0] == policy:
         return(1)
@@ -39,10 +43,12 @@ def printR(x):
 ### functions for evaluating decisions
 
 def bordaScore(ord,policy_state):
-    '''
-    ord = ordering matrix
-    state = state determined by winner
-    returns the total borda score for a given policy state
+    ''' Borda score of a particular alturnative
+    Args,
+        ord: ordering matrix
+        state: state determined by winner
+    Returns,
+        the total borda score for a given policy state
     '''    
     p = len(ord[0]) #identify length of orderings
     scores = [borda(positions = p,ranks = i,policy=policy_state) for i in ord] #use borda helper functions
@@ -50,10 +56,12 @@ def bordaScore(ord,policy_state):
 
 
 def pluralityScore(ord,policy_state):
-    '''
-    ord = ordering matrix
-    state = state determined by winner
-    returns the total borda score for a given policy state
+    ''' Plurality Score of a particular alturnative
+    Args,
+        ord: ordering matrix
+        state: state determined by winner
+    Returns
+        the total borda score for a given policy state
     '''    
     p = len(ord[0]) #identify length of orderings
     scores = [plurality(ranks = i,policy=policy_state) for i in ord] #use borda helper functions
@@ -71,14 +79,13 @@ def zeroCorrelOrdering(N,
                        K=None,
                        ALPHA_VAL=1,
                        asym_graph=False):
-    """ Each state is independent, there are R = K^M states
-
-    Args:
+    """ Generates a preference ordering
+    Args,
         N: number of voters
         M: number of attributes 
         K: number of categories for each choice
         S: number of state
-    Returns:
+    Returns,
         dictionary with following elements:
             perm_freq: frequency of each preference ordering (i.e permuation)
             edge_weights: weights on pairwise election graph
@@ -176,8 +183,11 @@ def nameEdgeAtoB(A,B):
     return( "_" + str(A) + "_"+ "_" + str(B) + "_")
 
 def genGraphfromOrd(orderings):
-    """
-    generate graph from orderings
+    """ generate graph from orderings
+    Args,
+        orderings: preference orderings
+    Returns,
+        edge weights
     """
     S_number = len(orderings[0])
     # generate graph weights from ordering
@@ -190,8 +200,7 @@ def genGraphfromOrd(orderings):
     
 
 def prop_pref_AtoB(A,B,ORDERINGS):
-    """
-    given orderings, calculate the proportion that prefer a to b
+    """ given orderings, calculate the proportion that prefer a to b
     """
     sum_pref_A = 0
     for ORDERING in ORDERINGS:
@@ -207,7 +216,7 @@ def prop_pref_AtoB(A,B,ORDERINGS):
 
 def symBordaScoreFn(state,edge_weights):
     """ calculate symeetric borda scores for state, given edge weights
-    Args:
+    Args,
         state: a state (int in range 0 to |S|)
         edge_weights: a dictionary of edge weights
     """
@@ -239,9 +248,9 @@ def symBordaScoreFn(state,edge_weights):
 def base_convert(base_10_number,base_new):
     """
     converts base 10 number to number is desired base  (only works up to base 10)
-    Input:
-        base_10_number = Number in base 10
-    Output:
+    Args,
+        base_10_number: Number in base 10
+    Returns,
         number in base_new
     """
 

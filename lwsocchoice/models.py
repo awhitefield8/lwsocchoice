@@ -13,8 +13,8 @@ class V(object):
         """ Default constructor with dummy initialization values.
         Args,
             n_states: number of alturnatives
-            edge_weights: 
-            prob_values: 
+            edge_weights: edge weights in pairwise election graph
+            prob_values: probability vector that describes the probability of each preference ordering for a randomly drawn individual 
         
          """
         
@@ -28,19 +28,14 @@ class V(object):
 
 class M(object):
     """ A class representing pairwise election graph approximation
-    
-    Attributes:
-        n_states (int): number of states
-        n_voters (int): number of voters (who we can poll - in the model there are infinite voters)
-
     """
     
     def __init__(self,n_states,n_voters,V_INST):
         """ Default constructor with dummy initialization values.
         Args,
-            n_states: 
-            n_voters:
-            V_inst: 
+            n_states: number of states
+            n_voters: number of voter
+            V_inst: an instance of V
         
          """
         self.n_states = n_states
@@ -160,8 +155,6 @@ class M(object):
         self.pollingScheme = "updateGraphFixed"
         
     def updateGraphRepBureau(self,n_bureau_members):
-
-
         #repeat calcs in zeroCorrelOrdering
         STATES = [i for i in range(0,self.n_states)] 
         perms = list(itertools.permutations(STATES)) #will always be the same  
